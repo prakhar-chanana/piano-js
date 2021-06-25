@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+        .piano{
+            background: #222222;
+            width: 780px;
+            height: 350px;
+            border: 3px solid black;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 200px;
+            box-shadow: 0 40px 15px 0 rgba(0,0,0,0.50), 0 30px 50px 0 rgba(0,0,0,0.40);
+        }
+        .sp {
+            display: flex;
+            flex-wrap: wrap;
+            width: 97%;
+            height: 115px;
+            margin: auto;
+            margin-top: 15px;
+        }
+        .speaker{
+            background: white;
+            width: 18%;
+            height: 100%;
+            border-radius: 50%;
+            margin: auto;
+            background-image: radial-gradient(rgba(151, 151, 151, 0.8),rgba(3, 3, 3, 1)), url("Dot-background-PNG-Image.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 0.5px solid #000000;
+        }
+        .btw{
+            width: 40%;
+            height: 45%;
+            margin: auto;
+            margin-top: 33px;
+            border: 0.5px solid black;
+            border-radius: 50%;
+            background: radial-gradient(rgb(128, 128, 128), rgb(19, 19, 19));
+        }
+        .cn{
+            width: 60%;
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            width:80%;
+            height: 60px;
+            background: black;
+            color: lime;
+            margin: auto;
+            margin-top: 10px;
+            border: 2px solid lime;
+            border-radius: 10px;
+            font-family: 'Audiowide', cursive;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+        .logo h1{
+            margin: auto;
+        }
+        .btn{
+            display: flex;
+            width: 80%;
+            margin: 10px auto;
+            justify-content: center;
+        }
+        .keys{
+            position: relative;
+            background: black;
+            width: 97%;
+            height: 57%;
+            margin: auto;
+            margin-top: 15px;
+            border-radius: 0 0 5px 5px;
+        }
+        .key{
+            display: block;
+            position: relative;
+            width: 6.58%;
+            height: 97%;
+            margin: 2px;
+            float: left;
+            background: white;
+            border-radius: 0 0 3px 3px;
+        }
+        .key_1{
+            margin-left: 3.5px;
+        }
+        .black_key{
+            display: block;
+            float: left;
+            position: absolute;
+            z-index: 99;
+            top: 2px;
+            width: 4%;
+            height: 65%;
+            background: black;
+            border-radius: 0 0 3px 3px;
+        }
+        .change{
+            margin: auto;
+            margin-top: 100px;
+            width: 50%;
+            height: 25px;
+            font-size: 15px;
+            font-weight: 700;
+            color: black;
+            background: lime;
+            border: 1px solid lime;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .change:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.50), 0 17px 50px 0 rgba(0,0,0,0.40);
+        }
+    </style>
+</head>
+<body>
+    <div class="piano" id="piano">
+        <div class="sp">
+            <div class="speaker">
+                <div class="btw"></div>
+            </div>
+            <div class="cn">
+                <div class="logo">
+                    <h1>Piano</h1>
+                </div>
+            </div>
+            <div class="speaker">
+                <div class="btw"></div>
+            </div>
+        </div>
+        <div class="keys">
+            <div class="key key_1" onclick="play_c3()"></div>
+            <div class="key" onclick="play_d3()"></div>
+            <div class="key" onclick="play_e3()"></div>
+            <div class="key" onclick="play_f3()"></div>
+            <div class="key" onclick="play_g3()"></div>
+            <div class="key" onclick="play_a3()"></div>
+            <div class="key" onclick="play_b3()"></div>
+            <div class="key" onclick="play_c4()"></div>
+            <div class="key" onclick="play_d4()"></div>
+            <div class="key" onclick="play_e4()"></div>
+            <div class="key" onclick="play_f4()"></div>
+            <div class="key" onclick="play_g4()"></div>
+            <div class="key" onclick="play_a4()"></div>
+            <div class="key" onclick="play_b4()"></div>
+            <div class="black_key" style="left: 40px;" onclick="play_c_3()"></div>
+            <div class="black_key" style="left: 94px;" onclick="play_d_3()"></div>
+            <div class="black_key" style="left: 201px;" onclick="play_f_3()"></div>
+            <div class="black_key" style="left: 255px;" onclick="play_g_3()"></div>
+            <div class="black_key" style="left: 309px;" onclick="play_a_3()"></div>
+            <div class="black_key" style="left: 416px;" onclick="play_c_4()"></div>
+            <div class="black_key" style="left: 470px;" onclick="play_d_4()"></div>
+            <div class="black_key" style="left: 578px;" onclick="play_f_4()"></div>
+            <div class="black_key" style="left: 632px;" onclick="play_g_4()"></div>
+            <div class="black_key" style="left: 686px;" onclick="play_a_4()"></div>
+        </div>
+    </div>
+    
+    <div class="btn">
+        <button class="change" onclick="changecolor()">Change Color</button>
+    </div>
+
+    <audio src="sounds/203458__tesabob2001__a3.mp3" id="note_a3"></audio>
+    <audio src="sounds/203465__tesabob2001__a4.mp3" id="note_a4"></audio>
+    <audio src="sounds/203502__tesabob2001__a-3.mp3" id="note_a_3"></audio>
+    <audio src="sounds/203460__tesabob2001__a-4.mp3" id="note_a_4"></audio>
+    <audio src="sounds/203463__tesabob2001__b3.mp3" id="note_b3"></audio>
+    <audio src="sounds/203462__tesabob2001__b4.mp3" id="note_b4"></audio>
+    <audio src="sounds/203479__tesabob2001__c3.mp3" id="note_c3"></audio>
+    <audio src="sounds/203478__tesabob2001__c4-middle-c.mp3" id="note_c4"></audio>
+    <audio src="sounds/203466__tesabob2001__c-3.mp3" id="note_c_3"></audio>
+    <audio src="sounds/203481__tesabob2001__c-4.mp3" id="note_c_4"></audio>
+    <audio src="sounds/203486__tesabob2001__d3.mp3" id="note_d3"></audio>
+    <audio src="sounds/203472__tesabob2001__d4.mp3" id="note_d4"></audio>
+    <audio src="sounds/203483__tesabob2001__d-3.mp3" id="note_d_3"></audio>
+    <audio src="sounds/203482__tesabob2001__d-4.mp3" id="note_d_4"></audio>
+    <audio src="sounds/203470__tesabob2001__e3.mp3" id="note_e3"></audio>
+    <audio src="sounds/203471__tesabob2001__e4.mp3" id="note_e4"></audio>
+    <audio src="sounds/203468__tesabob2001__f3.mp3" id="note_f3"></audio>
+    <audio src="sounds/517466__youaremyaardvark__f.mp3" id="note_f4"></audio>
+    <audio src="sounds/203501__tesabob2001__f-3.mp3" id="note_f_3"></audio>
+    <audio src="sounds/203500__tesabob2001__f-4.mp3" id="note_f_4"></audio>
+    <audio src="sounds/203493__tesabob2001__g3.mp3" id="note_g3"></audio>
+    <audio src="sounds/203492__tesabob2001__g4.mp3" id="note_g4"></audio>
+    <audio src="sounds/203488__tesabob2001__g-3.mp3" id="note_g_3"></audio>
+    <audio src="sounds/203491__tesabob2001__g-4.mp3" id="note_g_4"></audio>
+
+    <script>
+        function changecolor(){
+            var r = Math.floor(Math.random()* 256);
+            var g = Math.floor(Math.random()* 256);
+            var b = Math.floor(Math.random()* 256);
+            var mycolor = 'rgb(' + r + ',' + g + ',' + b + ')';
+            document.getElementById('piano').style.background = mycolor;
+        }
+
+        function play_a3(){
+            var audio_a3 = document.getElementById('note_a3');
+            audio_a3.play();
+        }
+
+        function play_a_3(){
+            var audio_a_3 = document.getElementById('note_a_3');
+            audio_a_3.play();
+        }
+
+        function play_a4(){
+            var audio_a4 = document.getElementById('note_a4');
+            audio_a4.play();
+        }
+        
+        function play_a_4(){
+            var audio_a_4 = document.getElementById('note_a_4');
+            audio_a_4.play();
+        }
+
+        function play_b3(){
+            var audio_b3 = document.getElementById('note_b3');
+            audio_b3.play();
+        }
+
+        function play_b4(){
+            var audio_b4 = document.getElementById('note_b4');
+            audio_b4.play();
+        }
+
+        function play_c3(){
+            var audio_c3 = document.getElementById('note_c3');
+            audio_c3.play();
+        }
+
+        function play_c_3(){
+            var audio_c_3 = document.getElementById('note_c_3');
+            audio_c_3.play();
+        }
+
+        function play_c4(){
+            var audio_c4 = document.getElementById('note_c4');
+            audio_c4.play();
+        }
+
+        function play_c_4(){
+            var audio_c_4 = document.getElementById('note_c_4')
+            audio_c_4.play();
+        }
+
+        function play_d3(){
+            var audio_d3 = document.getElementById('note_d3');
+            audio_d3.play();
+        }
+
+        function play_d_3(){
+            var audio_d_3 = document.getElementById('note_d_3');
+            audio_d_3.play();
+        }
+
+        function play_d4(){
+            var audio_d4 = document.getElementById('note_d4');
+            audio_d4.play();
+        }
+
+        function play_d_4(){
+            var audio_d_4 = document.getElementById('note_d_4');
+            audio_d_4.play();
+        }
+
+        function play_e3(){
+            var audio_e3 = document.getElementById('note_e3');
+            audio_e3.play();
+        }
+
+        function play_e4(){
+            var audio_e4 = document.getElementById('note_e4');
+            audio_e4.play();
+        }
+
+        function play_f3(){
+            var audio_f3 = document.getElementById('note_f3');
+            audio_f3.play();
+        }
+
+        function play_f_3(){
+            var audio_f_3 = document.getElementById('note_f_3');
+            audio_f_3.play();
+        }
+
+        function play_f4(){
+            var audio_f4 = document.getElementById('note_f4');
+            audio_f4.play();
+        }
+
+        function play_f_4(){
+            var audio_f_4 = document.getElementById('note_f_4');
+            audio_f_4.play();
+        }
+
+        function play_g3(){
+            var audio_g3 = document.getElementById('note_g3');
+            audio_g3.play();
+        }
+
+        function play_g_3(){
+            var audio_g_3 = document.getElementById('note_g_3');
+            audio_g_3.play();
+        }
+
+        function play_g4(){
+            var audio_g4 = document.getElementById('note_g4');
+            audio_g4.play();
+        }
+
+        function play_g_4(){
+            var audio_g_4 = document.getElementById('note_g_4');
+            audio_g_4.play();
+        }
+    </script>
+
+</body>
+</html>;
